@@ -1,18 +1,24 @@
 // Biblioteca de 3ros para manejar errores http
 // ES5: var createError = require('http-errors');
 // ES6 👇
-import createError from "http-errors";
+import createError from 'http-errors';
 // El framework express
-import express from "express";
+import express from 'express';
 // Biblioteca del nucleo de node que sirve para
 // administrar rutas
-import path from "path";
+import path from 'path';
 // Biblioteca externa que sirve para administrar
 // cookies
-import cookieParser from "cookie-parser";
+import cookieParser from 'cookie-parser';
 // Biblioteca que registra en consola
 // solicitudes del cliente
-import logger from "morgan";
+import logger from 'morgan';
+
+// Importando Webbpack middleware
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import webpackHotMiddleware from 'webpack-hot-middleware'
+import webpackConfig from '../webpack.dev.config'
 
 // Definición de rutas
 import indexRouter from "./routes/index";
@@ -26,12 +32,11 @@ const app = express();
 // 1. Establecer donde estarán las plantillas
 // (Vistas -> Views)
 // app.set("<nombre de la var>", <valor>)
-app.set("views", path.join(__dirname, "views"));
+app.set('views', path.join(__dirname, 'views'));
 // Establezco que motor precargado usare
-app.set("view engine", "hbs");
-
+app.set('view engine', 'hbs');
 // Establezco Middelware
-app.use((logger("dev")));
+app.use((logger('dev')));
 // Middleware para parsear a json la peticion
 app.use(express.json());
 // Decodificar la url
@@ -39,13 +44,11 @@ app.use(express.urlencoded({ extended: false }));
 // Parsear cookies
 app.use(cookieParser());
 // Servidor de archivos estáticos
-app.use(express.static(path.join(__dirname,"..", "public")));
-
+app.use(express.static(path.join(__dirname,'..', 'public')));
 // Registro Rutas
-app.use("/", indexRouter);
-app.use("/index", indexRouter);
+app.use('/', indexRouter);
+app.use('/index', indexRouter);
 app.use('/users', usersRouter);
-
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {
   next(createError(404));
@@ -54,13 +57,12 @@ app.use((req, res, next)=> {
 app.use((err, req, res, next)=> {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
 
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render('error');
 });
-
 // Exportando la instancia del server "app"
 // ES5 👇
 // module.exports = app;
