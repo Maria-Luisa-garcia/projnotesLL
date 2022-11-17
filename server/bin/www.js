@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Module dependencies.
  */
@@ -6,7 +7,7 @@
 // var app = require('../app');
 // ES6 👇
 import app from "../app"
-import debug from '../servicie/debugLogger'
+import debug from '../services/debugLogger'
 import http from 'http';
 
 /**
