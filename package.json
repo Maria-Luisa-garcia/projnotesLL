@@ -7,9 +7,12 @@
     "dev": "nodemon --exec babel-node ./server/bin/www",
     "devc": "SET NODE_ENV=development && webpack serve --config ./webpack.dev.config.js --mode development",
     "devb": "babel-watch ./server/bin/www",
-    "clean": "rimraf dist",
-    "build": "npm run clean && babel ./server --out-dir dist --copy-files",
-    "itgam": "ls"
+    "cleans": "rimraf -rf dist",
+    "cleanc": "rimraf -f bundle.js",
+    "b:s": "npm run cleans && babel ./server --out-dir dist --copy-files",
+    "b:c": "npm run cleanc && webpack --config ./webpack.config.js --mode production",
+    "itgam": "ls",
+    "build": "npm run b:c && npm run b:s"
   },
   "dependencies": {
     "app-root-path": "^3.0.0",
