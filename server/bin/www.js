@@ -1,25 +1,25 @@
 #!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
 // ES5 👇
 // var app = require('../app');
 // ES6 👇
-var debug = require('debug')('projnotess2022b');
-var http = require('http');
+import app from "../app"
+import debug from '../servicie/debugLogger'
+import http from 'http';
 
 /**
  * Get port from environment and store in Express.
  */
- var port = normalizePort(process.env.PORT || '3000');
- app.set('port', port);
- /**
-  * Create HTTP server.
-  */
- // app es una funcion de tipo middleware (codigo intermediario)
- // (req, res) =>{ ...res.send("algo") }
- var server = http.createServer(app);
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+/**
+ * Create HTTP server.
+ */
+// app es una funcion de tipo middleware (codigo intermediario)
+// (req, res) =>{ ...res.send("algo") }
+var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -69,12 +69,11 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
- function onListening() {
+function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-
     // Desestrecuturando port de addr
     let {port} = addr
   debug(`🎈 Listening on http://localhost:${port}`);
