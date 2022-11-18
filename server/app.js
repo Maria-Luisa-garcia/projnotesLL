@@ -12,7 +12,8 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 // Biblioteca que registra en consola
 // solicitudes del cliente
-import logger from 'morgan';
+
+import morgan from 'morgan';
 import debug from './services/debugLogger'
 
 // Importando Webbpack middleware
@@ -67,8 +68,9 @@ if (nodeEnv === 'development') {
 app.set('views', path.join(__dirname, 'views'));
 // Establezco que motor precargado usare
 app.set('view engine', 'hbs');
+
 // Establezco Middelware
-app.use((logger('dev')));
+app.use((morgan('dev')));
 // Middleware para parsear a json la peticion
 app.use(express.json());
 // Decodificar la url
@@ -99,3 +101,5 @@ app.use((err, req, res, next)=> {
 // module.exports = app;
 // ES6 👇
 export default app;
+
+
