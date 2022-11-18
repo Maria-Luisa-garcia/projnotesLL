@@ -14,7 +14,7 @@ import configKeys from '../config/configKeys';
 /**
  * Get port from environment and store in Express.
  */
- const port = normalizePort(configKeys.port);
+const port = normalizePort(configKeys.port);
 app.set('port', port);
 /**
  * Create HTTP server.
@@ -75,6 +75,7 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
+
   // Desestrecuturando port de addr
   const { port } = addr;
   debug(`🎈 Listening on http://localhost:${port}`);
