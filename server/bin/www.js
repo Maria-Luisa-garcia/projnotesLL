@@ -14,7 +14,7 @@ import configKeys from '../config/configKeys';
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(configKeys.port);
+ const port = normalizePort(configKeys.port);
 app.set('port', port);
 /**
  * Create HTTP server.
