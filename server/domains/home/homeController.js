@@ -9,10 +9,10 @@ const home = (req, res) => {
     title: 'Express',
     author: 'Garcia Tellez Maria Luisa',
   };
+
   // 2. Mandamos a generar la vista con el Template Engine
   res.render('home/home', viewModel);
 };
-
 // GET "/about"
 const about = (req, res) => {
   const viewModel = {

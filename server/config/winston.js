@@ -6,10 +6,13 @@ Winston ofrece 3 tipos de transportes:
 */
 // Importar Winston
 import Winston, { format } from 'winston';
+
 // Se obtiene la ruta a la raiz del proyecto
 import appRoot from 'app-root-path';
+
 // Desestructurando modulos utiles de format
 const { combine, timestamp, label, printf, colorize } = format;
+
 // Definiendo colores para cada tipo de error
 const colors = {
   error: 'red',
@@ -18,8 +21,10 @@ const colors = {
   http: 'magenta',
   debug: 'blue',
 };
+
 // Agregando el esquema de colores a Winston
 Winston.addColors(colors);
+
 // Creando los formatos para la consola
 const myConsoleFormat = combine(
   // Colores
@@ -34,6 +39,7 @@ const myConsoleFormat = combine(
       `${info.label}: ${info.level}: ${info.timestamp}: ${info.message} `
   )
 );
+
 // Creando el formato para archivo
 const myFileFormat = combine(
   // Quitando el color de texto de salida
@@ -76,6 +82,7 @@ const options = {
     format: myConsoleFormat,
   },
 };
+
 // Creamos una instancia del Logger
 const logger = Winston.createLogger({
   transports: [
@@ -86,6 +93,7 @@ const logger = Winston.createLogger({
   ],
   exitOnError: false, // No finaliza en excepciones no manejadas
 });
+
 // Esto sirve para acomplar morgan a winston
 /*
 morgan --> Winston --> [transport info]

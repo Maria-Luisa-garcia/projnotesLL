@@ -4,7 +4,6 @@ import { Router } from 'express';
 import homeController from './homeController';
 // Creando una isntancia del enrutador
 const router = new Router();
-
 // Enrutamos
 // GET '/'
 // GET '/home'
