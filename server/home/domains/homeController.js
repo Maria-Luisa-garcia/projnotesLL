@@ -5,7 +5,7 @@ const home = (req, res) => {
     // 1. Generando el view-model
     const viewModel = {
       title: 'Express',
-      author: 'Ivan Rivalcoba',
+      author: 'Garcia Tellez Maria Luisa',
     };
   
     // 2. Madamos a generar la vista con el Template Engine
