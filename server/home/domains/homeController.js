@@ -7,10 +7,14 @@ const home = (req, res) => {
       title: 'Express',
       author: 'Garcia Tellez Maria Luisa',
     };
+   // 2. Mandamos a generar la vista con el Template Engine
+   res.render('home/home', viewModel);
+  };
   
-    // 2. Madamos a generar la vista con el Template Engine
-    res.render('home', viewModel);
+  const about = (req, res) => {
+    res.render('home/about', {});
+   
   };
   
   // Exportando el Controlador
-  export default { home };
+  export default { home, about };
