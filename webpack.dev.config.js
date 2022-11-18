@@ -5,6 +5,9 @@ const path = require('path');
 // Importando el extractor de css
 const MiniCssExtractPlugin =
   require('mini-css-extract-plugin');
+
+  //Importando Eslint para webpack
+  const EslintPlugin =require('eslint-webpack-plugin')
 // Exportamos un objeto de configuración
 // que sera usado por webpack
 module.exports = {
@@ -12,7 +15,7 @@ module.exports = {
   entry: "./client/index.js",
   // 2. Especificar el archivo de salida
   output: {
-    // 2.1 Ruta fuente de archivos publicos
+     // 2.1 Ruta fuente de archivos publicos
     path: path.resolve(__dirname, "public"),
     // 2.2 Nombre del archivo de salida
     filename: "bundle.js",
@@ -63,6 +66,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'stylesheets/app.css'
-    })
+    }),
+    new EslintPlugin ()
   ]
 }
