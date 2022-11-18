@@ -4,15 +4,17 @@
         "es2021": true,
         "node": true
     },
-    "extends": "airbnb-base",
+    "extends": ["airbnb-base","prettier"],
+    "plugins": ["prettier"],
     "overrides": [
     ],
-    "parse": "@babel/eslint-parse",
+    "parser":"@babel/eslint-parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "rules": {
-        "no-console": "off"
+        "prettier/prettier": ["error"],
+        "no-console": "off",
     }
 }
