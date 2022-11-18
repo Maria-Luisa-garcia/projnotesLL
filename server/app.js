@@ -10,29 +10,27 @@ import path from 'path';
 // Biblioteca externa que sirve para administrar
 // cookies
 import cookieParser from 'cookie-parser';
-
 // Registrador de eventos HTTP
 import morgan from 'morgan';
-
 // Importando Webbpack middleware
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.dev.config';
 
+// Importando el configurador de motor de plantillas
+import configTemplateEngine from './config/templateEngine';
+
 // Logger de la aplicación
 import logger from './config/winston';
 import debug from './services/debugLogger';
-
 // Definición de rutas
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 // Recuperar el modo de ejecución de la app
 const nodeEnv = process.env.NODE_ENV || 'development';
-
 // Creando una instancia de express
 const app = express();
-
 // Inclusion del webpack middleware
 if (nodeEnv === 'development') {
   debug('✒ Ejecutando en modo de desarrollo 👨‍💻');
@@ -59,18 +57,18 @@ if (nodeEnv === 'development') {
   // Registrando el HMR Middleware
   app.use(WebpackHotMiddleware(bundler));
 } else {
-  ebug('✒ Ejecutando en modo de producción 🏭');
+  debug('✒ Ejecutando en modo de producción 🏭');
 }
 
 // view engine setup
 // Configura el motor de plantillas
+configTemplateEngine(app);
 // 1. Establecer donde estarán las plantillas
 // (Vistas -> Views)
 // app.set("<nombre de la var>", <valor>)
 app.set('views', path.join(__dirname, 'views'));
 // Establezco que motor precargado usare
 app.set('view engine', 'hbs');
-
 // Establezco Middelware
 app.use(morgan('dev', { stream: logger.stream }));
 // Middleware para parsear a json la peticion
@@ -81,12 +79,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // Servidor de archivos estáticos
 app.use(express.static(path.join(__dirname, '..', 'public')));
-
 // Registro Rutas
 app.use('/', indexRouter);
 app.use('/index', indexRouter);
 app.use('/users', usersRouter);
-
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   logger.error(
@@ -94,24 +90,19 @@ app.use((req, res, next) => {
   );
   next(createError(404));
 });
-
 // error handler
 app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // Registrando mensaje de error
   logger.error(`${err.status || 500} - ${err.message}`);
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
-
 // Exportando la instancia del server "app"
 // ES5 👇
 // module.exports = app;
 // ES6 👇
 export default app;
-
