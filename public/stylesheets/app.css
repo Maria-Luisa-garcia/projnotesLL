@@ -1,9 +1,10 @@
 h1{
-    color: rgb(19, 69, 236);
+  color: rgb(8, 13, 169);
   }
-  body{
+body{
     padding: 50px;
     font: "Lucida Grande", Helvetica, Arial, sans-serif;
+     background-color: rgb(225, 225, 31);
   }
 
   a{
