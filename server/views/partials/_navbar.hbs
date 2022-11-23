@@ -1,3 +1,9 @@
+<!-- Se crea una estructura Dropdown -->
+<ul id="dropdownMenu" class="dropdown-content">
+  <!-- Operaciones -->
+  {{> _operations}}
+  <!-- fin Operaciones -->
+</ul>
 <div class='container'>
   <div class='nav-wrapper'>
     <a href='/' class='brand-logo'><img src="images/logo.jpg" width="120" height="60"> Smurfit Kappa </a>
@@ -10,13 +16,15 @@
         Nuestro campus
       </a></li>
       </a></li>
-       <li><a href='/about'>
-        <i class='material-icons left'>book</i>
-         Programas educativos
-      </a></li>
+       <li><a href='#'>
 
-
-      
+ <li>
+          <a class="dropdown-trigger" href="#" data-target="dropdownMenu">
+            Menú
+            <i class="material-icons right">
+              arrow_drop_down
+            </i>
+          </a>
      </ul>
     <!-- Visualizción de navegacion para moviles -->
     <a href='#' data-target='slide-out' class='sidenav-trigger'>
@@ -33,9 +41,16 @@
         <i class='material-icons left'>web</i>
          Nuestro campus
       </a></li>
+ <!-- Operaciones -->
+
+        {{> _operations}}
+        <!-- Divisor -->
+        <li class="divider"></li>
+        <li>
+
        <li><a href='/about'>
         <i class='material-icons left'>book</i>
-         Programas educativos
+         Menú
       </a></li>
       </ul>
   </div>
