@@ -1,1 +1,140 @@
-<h1>Crear Proyecto</h1>
+<br />
+<div class='row'>
+  <div class='col s12 m10 offset-m1 l8 offset-l2'>
+    <div class='card'>
+      <!-- Imagen de tarjeta -->
+      <div class='card-image'>
+        <img src='/images/loo.png' alt='Project Image' />
+        <br />
+        <span class='card-title white teal-text text-darken-4'>
+          Agregar Usuario
+        </span>
+      </div>
+      <!-- Contenido de tarjeta -->
+      <form autocomplete='off' action='/project/add' method='POST'>
+        <div class='card-content'>
+          <div class='input-field'>
+            <label for='project-name'>Nombre Completo:</label>
+            <input
+              placeholder='Ingrese Apellido Paterno Primero'
+              type='text'
+              name='name'
+              id='project-name'
+              value="{{project.name}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+           <div class='input-field'>
+            <label for='project-name'>Nombre de Usuario:</label>
+            <input
+              placeholder='Ingrese su nombre de Usuario'
+              type='text'
+              name='usuario'
+              id='project-usuario'
+              value="{{project.usuario}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+  <div class='input-field'>
+    <label for='project-name'>Fecha de Nacimiento:</label>
+    <br/>
+<input
+              type='date'
+              name='start'
+              id='project-start'
+              value="{{project.start}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+          <div class='input-field'>
+            <label for='project-description'>
+              Dirección:
+            </label>
+            <textarea
+              name='description'
+              class="materialize-textarea"
+              id='project-description'
+              required
+            >{{project.description}}</textarea>
+            {{#if errorModel.descriptionError}}
+            <span style="color:red;">🚩 {{errorModel.descriptionError}}</span>
+            {{/if}}
+          </div>
+<div class='input-field'>
+            <label for='project-name'>Celular:</label>
+            <input
+              placeholder='Ingrese su celular de 10 digitos'
+              type='text'
+              name='cel'
+              id='project-cel'
+              value="{{project.cel}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+<div class='input-field'>
+            <label for='project-name'>Telefono:</label>
+            <input
+              placeholder='Ingrese su Telefono'
+              type='text'
+              name='tel'
+              id='project-tel'
+              value="{{project.tel}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+           <div class='input-field'>
+            <label for='project-name'>Correo Electronico:</label>
+            <input
+              placeholder='Ingrese su email'
+              type='email'
+              name='email'
+              id='project-email'
+              class="validate"
+              value="{{project.email}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+          
+           <div class='input-field'>
+            <label for='project-name'>Contraseña:</label>
+            <input
+              placeholder='Ingrese su contraseña con 6 o más caracteres'
+              type='password'
+              pattern=".{6,}"
+              name='password'
+              id='project-password'
+              value="{{project.password}}"
+              required
+            />
+            {{#if errorModel.nameError}}
+            <span style="color:red;">🚩 {{errorModel.nameError}}</span>
+            {{/if}}
+          </div>
+        </div>
+        <div class='card-action'>
+          <button type="submit" class="blue darken-3 waves-effect waves-light btn">
+            <i class="material-icons left">note_add</i> Agregar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
