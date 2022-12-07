@@ -1,24 +1,27 @@
 // Creando los Actions Methods
 // del controlador Project
-
 // Importando el modelo del proyecto
 import ProjectModel from './projectModel';
 
 // GET "/project"
 // GET "/project/list"
-const list = (req, res) => {
+const list = async (req, res) => {
   // 1. Generando el view-model
-  const viewModel = {};
+  // Retornar los proyectos de la base de datos
+  // Quitando con "lean" metodos de mongoose
+  const projects = await ProjectModel.find().lean().exec();
   // 2. Madamos a generar la vista con el Template Engine
-  res.render('project/list', viewModel);
+  // Regreso el resultado de la peticion
+  res.render('project/list', { projects });
+  // res.json(projects);
 };
+
 // GET "/project/add"
 // GET "/project/create"
 const showAddProjectForm = (req, res) => {
   const viewModel = {};
   res.render('project/add', viewModel);
 };
-
 // POST "/project/add"
 // POST "/project/create"
 const addProject = async (req, res) => {
@@ -44,17 +47,19 @@ const addProject = async (req, res) => {
     // Creando un documento con los datos
     // Provistos por el formulario
     const projectInstance = new ProjectModel(validData);
-    // Salvando el documento en la base de datos
     try {
+      // Salvando el documento en la base de datos
       const projectDocument = await projectInstance.save();
-      return res.json(projectDocument);
+      // Cambiar esto por winston
+      console.log(`Proyecto Creado: ${JSON.stringify(projectDocument)}`);
+      // Redireccionando al listado de proyectos
+      return res.redirect('/project');
     } catch (error1) {
       return res.status(404).json({ error1 });
     }
   }
-  // Contestando los datos del proyecto
+  // Contestando los datos del proyecti
   return res.status(200).render('project/add', { project, errorModel });
 };
-
 // Exportando el Controlador
 export default { list, showAddProjectForm, addProject };
