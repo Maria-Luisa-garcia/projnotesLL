@@ -1,33 +1,23 @@
-<!-- Se crea una estructura Dropdown -->
-<ul id="dropdownMenu" class="dropdown-content">
-  <!-- Operaciones -->
-  {{> _operations}}
-  <!-- fin Operaciones -->
-</ul>
+{{> _toolbarOperationsMenu}}
+
 <div class='container'>
   <div class='nav-wrapper'>
-    <a href='/' class='brand-logo'><img src="images/logo.jpg" width="120" height="60"> Smurfit Kappa </a>
+   <a href='/' class='brand-logo'><img src="images/logo.jpg" width="120" height="60"> Smurfit Kappa </a>
     <ul id='nav-mobile' class='right hide-on-med-and-down'>
       <li>
-
-
-        <a href='/'><i class='material-icons left'>home</i> Inicio</a>
+        <a href='/'><i class='material-icons right'>home</i> Inicio</a>
       </li>
       <li><a href='/about'>
-        <i class='material-icons right'>web</i>
-        Nuestro campus
+      <i class='material-icons right'>web</i>
+        Nuestro Campus
       </a></li>
-
-
- <li>
-          <a class="dropdown-trigger" href="#" data-target="dropdownMenu">
-            Menú
-            <i class="material-icons right">
-              arrow_drop_down
-            </i>
-          </a>
-     </ul>
-    <!-- Visualizción de navegacion para moviles -->
+      <!-- Dropdown Menu -->
+      <li>
+        <a href="#" class="dropdown-trigger" data-target="dropdownMenu">
+          Menú <i class="material-icons right">arrow_drop_down</i>
+        </a>
+      </li>
+    </ul><!-- Visualizción de navegacion para moviles -->
     <a href='#' data-target='slide-out' class='sidenav-trigger'>
       <i class='material-icons'>menu</i>
     </a>
@@ -38,21 +28,19 @@
           Inicio
         </a>
       </li>
-      <li><a href='/about'>
-        <i class='material-icons left'>web</i>
-         Nuestro campus
-      </a></li>
- <!-- Operaciones -->
-
-        {{> _operations}}
-        <!-- Divisor -->
-        <li class="divider"></li>
-        <li>
-
-       <li><a href='#'>
-        <i class='material-icons left'>book</i>
-         Menú
-      </a></li>
-      </ul>
+      <li class="divider"></li>
+      <li>
+        <a href="/project">Listar <i class="material-icons left">list</i></a>
+      </li>
+      <li>
+        <a href="/project/add">Crear <i class="material-icons left">add_box</i></a>
+      </li>
+      <li>
+        <a href='/about'>
+          <i class='material-icons left'>web</i>
+          Nuestro Campus
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
